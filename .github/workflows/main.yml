@@ -1,0 +1,25 @@
+Complete ML Workflow (11 Steps)
+Step 1 — Load Data
+Reads train.csv from Kaggle using pd.read_csv(), then prints the dataset shape and first rows for a sanity check.
+Step 2 — Exploratory Data Analysis (EDA)
+Prints missing values per column and the overall survival rate using .isnull().sum() and .mean().
+Step 3 — Feature Engineering
+Three new features are created: Title (extracted from passenger names via regex, then grouped — rare titles like Dr, Rev, Col are all mapped to "Rare"), FamilySize (SibSp + Parch + 1), and IsAlone (binary flag when FamilySize == 1).
+Step 4 — Handle Missing Values
+Age is filled with the median, Embarked with the mode, and Fare with the median — all standard imputation strategies.
+Step 5 — Encode Categorical Variables
+Sex is mapped to {male: 0, female: 1}, Embarked to {S: 0, C: 1, Q: 2}, and Title to a numeric map {Mr:0, Miss:1, Mrs:2, Master:3, Rare:4}.
+Step 6 — Select Features
+Final feature set: Pclass, Sex, Age, Fare, Embarked, FamilySize, IsAlone, Title — 8 features total.
+Step 7 — Train-Test Split
+80/20 split with random_state=42 and stratify=y to preserve the class ratio across both sets.
+Step 8 — Scale Features
+StandardScaler is fit on training data only and applied to both train and test sets — correctly avoiding data leakage.
+Step 9 — Train Model
+LogisticRegression(max_iter=1000, random_state=42) from scikit-learn is trained on the scaled training data.
+Step 10 — Evaluate
+Prints Accuracy, ROC-AUC, and a full Classification Report (precision, recall, F1 per class).
+Step 11 — Visualize & Save
+Generates a 1×2 matplotlib figure: a Confusion Matrix (heatmap with cell labels) and a Feature Coefficients bar chart (green = positive impact on survival, red = negative). Saved as titanic_results.png at 150 DPI.
+📊 Results
+Accuracy: ~81% | ROC-AUC: ~0.86  (github)
