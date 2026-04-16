@@ -38,7 +38,7 @@ def test_data_loading_from_csv(tmp_path):
 
     loaded = pd.read_csv(csv_path)
     assert loaded.shape == (2, 9)
-    assert set(['Survived', 'Pclass', 'Name', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare', 'Embarked']).issubset(loaded.columns)
+    assert {'Survived', 'Pclass', 'Name', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare', 'Embarked'}.issubset(loaded.columns)
 
 
 def test_preprocessing_creates_expected_features_without_missing_values():
