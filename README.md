@@ -1,49 +1,30 @@
 # Titanic Survival Prediction
 
-## Overview
-A machine learning project that predicts whether a Titanic passenger survived or not using Logistic Regression.
+![Project Banner](https://example.com/banner.png)
 
-## 💡 Business Value
-
-This model demonstrates how machine learning can be used to:
-- Predict survival outcomes using structured data
-- Assist decision-making in risk analysis systems
-- Serve as a foundation for real-world classification problems
-
-## Algorithm
-- Logistic Regression (scikit-learn)
-- Binary Classification: Survived (1) or Not (0)
+## Problem Statement
+The goal of this project is to predict the survival of passengers on the Titanic using machine learning techniques and available data.
 
 ## Results
-| Metric | Score |
-|-----------|--------|
-| Accuracy | ~81% |
-| ROC-AUC | ~0.86 |
+| Metric            | Score           |
+|-------------------|-----------------|
+| Accuracy          | **81%**         |
+| ROC-AUC           | **0.86**        |
 
-## 📊 Model Performance
+## Tech Stack
+[![Python](https://img.shields.io/badge/Python-3.8-blue.svg)](https://www.python.org/)
+[![Pandas](https://img.shields.io/badge/Pandas-1.2.0-red.svg)](https://pandas.pydata.org/)
+[![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-v0.24.0-orange.svg)](https://scikit-learn.org/stable/)
 
-### Confusion Matrix
-<img src="confusion_matrix.png" alt="Confusion Matrix" width="450">
+## How to Run
+1. Clone the repository using `git clone https://github.com/jameskoero/titanic-survival-prediction.git`
+2. Install the required packages using `pip install -r requirements.txt`
+3. Run the model using `python run_model.py`
 
-### ROC Curve
-<img src="roc_curve.png" alt="ROC Curve" width="450">
+## Key Findings
+- The predictions show notable differences based on gender and class of passengers.
+- Certain features, such as age and fare, significantly impact survival chances.
 
-## Features Used
-Pclass, Sex, Age, Fare, Embarked, FamilySize, IsAlone, Title
-
-## ⚙️ How to Run
-
-```bash
-git clone https://github.com/jameskoero/titanic-survival-prediction.git
-cd titanic-survival-prediction
-pip install -r requirements.txt
-python main.py
-streamlit run app.py
-```
-
-## Dataset
-Download train.csv from: https://www.kaggle.com/c/titanic/data
-
-## Author
-James Koero | Bsc Physics and Mathematics | Self-taught ML Engineer | Kisumu, Kenya
-Email: [jmskoero@gmail.com]
+## Visualizations
+![Chart 1](https://example.com/chart1.png)
+![Chart 2](https://example.com/chart2.png)
