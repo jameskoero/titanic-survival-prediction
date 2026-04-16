@@ -19,8 +19,10 @@ titanic-survival-prediction/
 ├── requirements.txt
 ├── data/
 │   ├── raw/
-│   │   └── train.csv
+│   │   └── .gitkeep
 │   └── processed/
+│   │   └── .gitkeep
+│   └── README.md
 ├── notebooks/
 │   ├── EDA.ipynb
 │   └── modelling.ipynb
@@ -38,8 +40,8 @@ titanic-survival-prediction/
 
 ## Dataset
 
-- Raw data is stored in `data/raw/train.csv`.
-- Source: [Kaggle Titanic Competition](https://www.kaggle.com/c/titanic/data)
+- Download `train.csv` from [Kaggle Titanic Competition](https://www.kaggle.com/c/titanic/data).
+- Place it in `data/raw/train.csv` before running the pipeline.
 
 ## Installation
 
