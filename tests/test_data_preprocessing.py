@@ -44,15 +44,21 @@ def test_data_loading_from_csv(tmp_path):
 def test_preprocessing_creates_expected_features_without_missing_values():
     raw = pd.DataFrame(
         {
-            'Survived': [0, 1, 1, 0],
-            'Pclass': [3, 1, 2, 2],
-            'Name': ['Allen, Mr. William', 'Cumings, Mrs. John', 'Moran, Miss. Ava', 'Doe, Prof. Jane'],
-            'Sex': ['male', 'female', 'female', 'female'],
-            'Age': [35.0, None, 19.0, 50.0],
-            'SibSp': [0, 1, 0, 0],
-            'Parch': [0, 0, 0, 0],
-            'Fare': [8.05, 71.2833, None, 10.5],
-            'Embarked': ['S', 'C', None, 'Q'],
+            'Survived': [0, 1, 1, 0, 0],
+            'Pclass': [3, 1, 2, 2, 3],
+            'Name': [
+                'Allen, Mr. William',
+                'Cumings, Mrs. John',
+                'Moran, Miss. Ava',
+                'Doe, Dona. Jane',
+                'Roe, Mx. Alex',
+            ],
+            'Sex': ['male', 'female', 'female', 'female', 'male'],
+            'Age': [35.0, None, 19.0, 50.0, 27.0],
+            'SibSp': [0, 1, 0, 0, 0],
+            'Parch': [0, 0, 0, 0, 0],
+            'Fare': [8.05, 71.2833, None, 10.5, 7.9],
+            'Embarked': ['S', 'C', None, 'Q', 'S'],
         }
     )
 
@@ -63,5 +69,9 @@ def test_preprocessing_creates_expected_features_without_missing_values():
 
     assert processed.loc[0, 'FamilySize'] == 1
     assert processed.loc[0, 'IsAlone'] == 1
-    assert processed.loc[1, 'Age'] == 35.0
-    assert processed.loc[3, 'Title'] == 0
+
+    assert pd.isna(raw.loc[1, 'Age'])
+    assert processed.loc[1, 'Age'] == raw['Age'].median()
+
+    assert processed.loc[3, 'Title'] == 4
+    assert processed.loc[4, 'Title'] == 0
