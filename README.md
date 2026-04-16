@@ -59,6 +59,7 @@ titanic-survival-prediction/
    python -m venv venv
    source venv/bin/activate
    # Windows (PowerShell): venv\Scripts\Activate.ps1
+   # Windows (CMD): venv\Scripts\activate.bat
    ```
 3. **Install dependencies**
    ```bash
