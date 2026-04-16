@@ -1,4 +1,5 @@
 """Train and evaluate a Titanic survival prediction model with visualizations."""
+# pylint: disable=invalid-name
 
 import warnings
 
@@ -55,22 +56,22 @@ X = df[features]
 y = df['Survived']
 
 # ■■ 7. TRAIN-TEST SPLIT ■■
-x_train, x_test, y_train, y_test = train_test_split(
+X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42, stratify=y
 )
 
 # ■■ 8. SCALE FEATURES ■■
 scaler = StandardScaler()
-x_train_sc = scaler.fit_transform(x_train)
-x_test_sc = scaler.transform(x_test)
+X_train_sc = scaler.fit_transform(X_train)
+X_test_sc = scaler.transform(X_test)
 
 # ■■ 9. TRAIN MODEL ■■
 model = LogisticRegression(max_iter=1000, random_state=42)
-model.fit(x_train_sc, y_train)
+model.fit(X_train_sc, y_train)
 
 # ■■ 10. EVALUATE ■■
-y_pred = model.predict(x_test_sc)
-y_prob = model.predict_proba(x_test_sc)[:, 1]
+y_pred = model.predict(X_test_sc)
+y_prob = model.predict_proba(X_test_sc)[:, 1]
 print('\n=== MODEL RESULTS ===')
 print(f'Accuracy : {accuracy_score(y_test, y_pred):.4f}')
 print(f'ROC-AUC : {roc_auc_score(y_test, y_prob):.4f}')
@@ -141,8 +142,8 @@ plt.close()
 print('✓ Saved: roc_curve.png')
 
 # ■■ 13. PLOT FEATURE DISTRIBUTION ■■
-x_test_orig = pd.DataFrame(x_test, columns=features)
-x_test_orig['Survived'] = y_test.values
+X_test_orig = pd.DataFrame(X_test, columns=features)
+X_test_orig['Survived'] = y_test.values
 
 plot_features = [
     ('Sex', 'Passenger Gender (0=Male, 1=Female)'),
@@ -162,8 +163,8 @@ fig.suptitle(
 for idx, (feature, label) in enumerate(plot_features):
     ax = axes[idx // 2, idx % 2]
 
-    survived = x_test_orig[x_test_orig['Survived'] == 1][feature]
-    not_survived = x_test_orig[x_test_orig['Survived'] == 0][feature]
+    survived = X_test_orig[X_test_orig['Survived'] == 1][feature]
+    not_survived = X_test_orig[X_test_orig['Survived'] == 0][feature]
 
     ax.hist(
         not_survived,
