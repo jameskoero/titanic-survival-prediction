@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import (accuracy_score, confusion_matrix,
-classification_report, roc_auc_score)
+classification_report, roc_auc_score, roc_curve, auc)
 from sklearn.preprocessing import StandardScaler
 import warnings
 
@@ -71,23 +71,94 @@ print(classification_report(y_test, y_pred))
 
 # ■■ 11. PLOT CONFUSION MATRIX ■■
 cm = confusion_matrix(y_test, y_pred)
-fig, axes = plt.subplots(1, 2, figsize=(12, 4))
-axes[0].imshow(cm, cmap='Blues')
-axes[0].set_title('Confusion Matrix', fontweight='bold')
-axes[0].set_xlabel('Predicted'); axes[0].set_ylabel('Actual')
+fig, ax = plt.subplots(figsize=(8, 6))
+im = ax.imshow(cm, cmap='Blues', aspect='auto')
+ax.set_title('Confusion Matrix', fontsize=16, fontweight='bold', pad=20)
+ax.set_xlabel('Predicted Label', fontsize=12, fontweight='bold')
+ax.set_ylabel('True Label', fontsize=12, fontweight='bold')
+ax.set_xticks([0, 1])
+ax.set_yticks([0, 1])
+ax.set_xticklabels(['Did Not Survive', 'Survived'])
+ax.set_yticklabels(['Did Not Survive', 'Survived'])
+
+# Add text annotations
 for i in range(2):
     for j in range(2):
-        axes[0].text(j, i, str(cm[i,j]), ha='center', va='center',
-        color='white' if cm[i,j]>cm.max()/2 else 'black', fontsize=14)
+        text = ax.text(j, i, f'{cm[i, j]}\n({100*cm[i,j]/cm.sum():.1f}%)',
+                      ha="center", va="center",
+                      color="white" if cm[i, j] > cm.max()/2 else "black",
+                      fontsize=14, fontweight='bold')
 
-# Feature importance (coefficients)
+plt.colorbar(im, ax=ax)
+plt.tight_layout()
+plt.savefig('confusion_matrix.png', dpi=300, bbox_inches='tight')
+plt.close()
+print('✓ Saved: confusion_matrix.png')
+
+# ■■ 12. PLOT ROC CURVE ■■
+fpr, tpr, thresholds = roc_curve(y_test, y_prob)
+roc_auc = auc(fpr, tpr)
+
+fig, ax = plt.subplots(figsize=(9, 8))
+ax.plot(fpr, tpr, color='#1f77b4', lw=3, label=f'ROC Curve (AUC = {roc_auc:.3f})')
+ax.plot([0, 1], [0, 1], color='red', lw=2, linestyle='--', label='Random Classifier')
+ax.fill_between(fpr, tpr, alpha=0.2, color='#1f77b4')
+ax.set_xlim([0.0, 1.0])
+ax.set_ylim([0.0, 1.05])
+ax.set_xlabel('False Positive Rate', fontsize=12, fontweight='bold')
+ax.set_ylabel('True Positive Rate', fontsize=12, fontweight='bold')
+ax.set_title('ROC Curve - Model Performance', fontsize=16, fontweight='bold', pad=20)
+ax.legend(loc="lower right", fontsize=11, framealpha=0.9)
+ax.grid(True, alpha=0.3, linestyle='--')
+plt.tight_layout()
+plt.savefig('roc_curve.png', dpi=300, bbox_inches='tight')
+plt.close()
+print('✓ Saved: roc_curve.png')
+
+# ■■ 13. PLOT FEATURE DISTRIBUTION ■■
+X_test_orig = pd.DataFrame(X_test, columns=features)
+X_test_orig['Survived'] = y_test.values
+
+plot_features = [
+    ('Sex', 'Passenger Gender (0=Male, 1=Female)'),
+    ('Age', 'Passenger Age'),
+    ('Pclass', 'Passenger Class (1, 2, or 3)'),
+    ('Fare', 'Ticket Fare')
+]
+
+fig, axes = plt.subplots(2, 2, figsize=(14, 10))
+fig.suptitle('Feature Distribution by Survival Outcome', fontsize=16, fontweight='bold', y=1.00)
+
+for idx, (feature, label) in enumerate(plot_features):
+    ax = axes[idx // 2, idx % 2]
+    
+    survived = X_test_orig[X_test_orig['Survived'] == 1][feature]
+    not_survived = X_test_orig[X_test_orig['Survived'] == 0][feature]
+    
+    ax.hist(not_survived, bins=20, alpha=0.6, label='Did Not Survive', color='#d62728', edgecolor='black')
+    ax.hist(survived, bins=20, alpha=0.6, label='Survived', color='#2ca02c', edgecolor='black')
+    ax.set_xlabel(label, fontsize=11, fontweight='bold')
+    ax.set_ylabel('Frequency', fontsize=11, fontweight='bold')
+    ax.set_title(f'{label} Distribution', fontsize=12, fontweight='bold')
+    ax.legend(fontsize=10)
+    ax.grid(True, alpha=0.3, linestyle='--', axis='y')
+
+plt.tight_layout()
+plt.savefig('feature_distribution.png', dpi=300, bbox_inches='tight')
+plt.close()
+print('✓ Saved: feature_distribution.png')
+
+# ■■ 14. PLOT FEATURE IMPORTANCE ■■
+fig, ax = plt.subplots(figsize=(10, 6))
 coef_df = pd.DataFrame({'Feature':features, 'Coefficient':model.coef_[0]})
 coef_df = coef_df.reindex(coef_df['Coefficient'].abs().sort_values(ascending=True).index)
-axes[1].barh(coef_df['Feature'], coef_df['Coefficient'],
-color=['red' if c<0 else 'green' for c in coef_df['Coefficient']])
-axes[1].set_title('Feature Coefficients', fontweight='bold')
-axes[1].axvline(0, color='black', linewidth=0.8)
+colors = ['#d62728' if c < 0 else '#2ca02c' for c in coef_df['Coefficient']]
+ax.barh(coef_df['Feature'], coef_df['Coefficient'], color=colors, edgecolor='black', linewidth=1.2)
+ax.set_xlabel('Coefficient Value', fontsize=12, fontweight='bold')
+ax.set_title('Feature Importance (Model Coefficients)', fontsize=14, fontweight='bold', pad=15)
+ax.axvline(0, color='black', linewidth=1)
+ax.grid(True, alpha=0.3, linestyle='--', axis='x')
 plt.tight_layout()
-plt.savefig('titanic_results.png', dpi=150, bbox_inches='tight')
-plt.show()
-print('Chart saved: titanic_results.png')
+plt.savefig('feature_importance.png', dpi=300, bbox_inches='tight')
+plt.close()
+print('\n✓ All visualizations generated successfully!')
