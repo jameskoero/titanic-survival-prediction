@@ -203,7 +203,6 @@ def generate_report_pdf(
             "binary survival prediction, with opportunities for feature enrichment and ensemble tuning.",
             fontsize=10,
         )
-        fig1.axis("off")
         pdf.savefig(fig1)
         plt.close(fig1)
 
@@ -219,7 +218,6 @@ def generate_report_pdf(
         )
         fig2.text(0.08, 0.76, "Training Comparison Metrics", fontsize=13, weight="bold")
         fig2.text(0.08, 0.62, json.dumps(training_metrics, indent=2), fontsize=9, family="monospace")
-        fig2.axis("off")
         pdf.savefig(fig2)
         plt.close(fig2)
 

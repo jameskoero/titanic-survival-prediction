@@ -3,6 +3,6 @@ __pycache__/
 .env
 .ipynb_checkpoints/
 venv/
-data/raw/
+data/raw/*.csv
 outputs/model.joblib
 outputs/metrics.json
