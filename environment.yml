@@ -5,7 +5,9 @@ dependencies:
   - python=3.10
   - pandas
   - numpy
-  - matplotlib
   - scikit-learn
+  - matplotlib
+  - streamlit
   - pytest
   - pylint
+  - pip
