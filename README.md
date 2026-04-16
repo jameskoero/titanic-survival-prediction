@@ -6,6 +6,10 @@
 
 The sinking of the Titanic is one of history's most infamous maritime disasters. This project aims to build a machine learning model that predicts whether a passenger survived or not based on features like age, gender, passenger class, and fare.
 
+### 📝 Optional Extended Description
+
+This project delivers an end-to-end binary classification workflow for the Titanic dataset, from data preparation to model evaluation and interpretation. It focuses on practical feature engineering (such as extracting passenger titles and creating family-based indicators), clean preprocessing for mixed numeric/categorical inputs, and transparent model behavior using Logistic Regression. Beyond prediction, the repository highlights why outcomes change by demographic and ticket-related attributes, providing interpretable insights into survival patterns. Visual outputs such as ROC and confusion matrix plots help communicate model quality clearly, while feature-impact charts explain which variables most influence predictions. The implementation is designed to be beginner-friendly but robust enough to demonstrate a production-style machine learning pipeline structure.
+
 ---
 
 ## 🏆 Results
