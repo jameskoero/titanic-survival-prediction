@@ -69,19 +69,19 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def evaluate_model(model, x_test, y_test) -> Tuple[float, float]:
+def evaluate_model(model, X_test, y_test) -> Tuple[float, float]:
     """Evaluate a fitted model and return key metrics.
 
     Args:
         model: Fitted model instance.
-        x_test: Transformed test features.
+        X_test: Transformed test features.
         y_test: Test labels.
 
     Returns:
         Tuple containing (accuracy, roc_auc).
     """
-    y_pred = model.predict(x_test)
-    y_prob = model.predict_proba(x_test)[:, 1]
+    y_pred = model.predict(X_test)
+    y_prob = model.predict_proba(X_test)[:, 1]
     return accuracy_score(y_test, y_pred), roc_auc_score(y_test, y_prob)
 
 
