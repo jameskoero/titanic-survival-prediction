@@ -61,7 +61,7 @@ def load_raw_dataset(raw_path: Path) -> pd.DataFrame:
 
 def extract_title(name: str) -> str:
     """Extract and normalize title from passenger name."""
-    title = pd.Series([name]).str.extract(r" ([A-Za-z]+)\\.", expand=False).iloc[0]
+    title = pd.Series([name]).str.extract(r" ([A-Za-z]+)\.", expand=False).iloc[0]
 
     if title in {
         "Lady",
