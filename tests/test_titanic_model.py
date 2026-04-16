@@ -1,11 +1,14 @@
+import os
+import sys
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
 
-import matplotlib
+os.environ.setdefault("MPLBACKEND", "Agg")
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-matplotlib.use("Agg")
-
-import titanic_model as tm
+import titanic_model as tm  # noqa: E402
 
 
 def build_sample_df(rows=30):

@@ -34,7 +34,7 @@ FEATURES = ["Pclass", "Sex", "Age", "Fare", "Embarked", "FamilySize", "IsAlone",
 def engineer_features(df: pd.DataFrame) -> pd.DataFrame:
     """Create title, family size and isolation features."""
     result = df.copy()
-    result["Title"] = result["Name"].str.extract(r" ([A-Za-z]+)\\.", expand=False)
+    result["Title"] = result["Name"].str.extract(r" ([A-Za-z]+)\.", expand=False)
     result["Title"] = result["Title"].replace(RARE_TITLES, "Rare")
     result["Title"] = result["Title"].replace("Mlle", "Miss")
     result["Title"] = result["Title"].replace("Ms", "Miss")
