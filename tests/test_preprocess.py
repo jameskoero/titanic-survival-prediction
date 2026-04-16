@@ -8,7 +8,7 @@ from src.preprocess import FEATURE_COLUMNS, add_engineered_features, build_prepr
 
 
 class TestFeatureEngineering(unittest.TestCase):
-    def test_title_familysize_and_isalone(self) -> None:
+    def test_title_family_size_and_is_alone(self) -> None:
         import pandas as pd
 
         input_df = pd.DataFrame(
