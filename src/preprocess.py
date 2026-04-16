@@ -5,18 +5,7 @@ from pathlib import Path
 from typing import Dict
 
 import pandas as pd
-
-FEATURE_COLUMNS = [
-    "Pclass",
-    "Sex",
-    "Age",
-    "Fare",
-    "Embarked",
-    "FamilySize",
-    "IsAlone",
-    "Title",
-]
-TARGET_COLUMN = "Survived"
+from constants import FEATURE_COLUMNS, TARGET_COLUMN
 
 TITLE_MAP = {"Mr": 0, "Miss": 1, "Mrs": 2, "Master": 3, "Rare": 4}
 EMBARKED_MAP = {"S": 0, "C": 1, "Q": 2}
@@ -24,7 +13,7 @@ SEX_MAP = {"male": 0, "female": 1}
 
 
 def _extract_title(name: str) -> str:
-    title = pd.Series([name]).str.extract(r" ([A-Za-z]+)\\.", expand=False).iloc[0]
+    title = pd.Series([name]).str.extract(r" ([A-Za-z]+)\.", expand=False).iloc[0]
     if pd.isna(title):
         return "Rare"
 

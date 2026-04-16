@@ -11,7 +11,7 @@ from sklearn.metrics import accuracy_score, roc_auc_score
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
-from preprocess import FEATURE_COLUMNS, TARGET_COLUMN
+from constants import FEATURE_COLUMNS, TARGET_COLUMN
 
 
 def parse_args() -> argparse.Namespace:

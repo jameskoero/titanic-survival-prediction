@@ -17,7 +17,7 @@ from sklearn.metrics import (
 )
 from sklearn.model_selection import train_test_split
 
-from preprocess import FEATURE_COLUMNS, TARGET_COLUMN
+from constants import FEATURE_COLUMNS, TARGET_COLUMN
 
 
 def parse_args() -> argparse.Namespace:
