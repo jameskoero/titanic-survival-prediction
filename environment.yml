@@ -8,4 +8,6 @@ dependencies:
   - scikit-learn
   - matplotlib
   - streamlit
+  - pytest
+  - pylint
   - pip
