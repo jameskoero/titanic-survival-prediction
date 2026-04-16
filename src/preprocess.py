@@ -31,14 +31,12 @@ EMBARKED_MAPPING = {"S": 0, "C": 1, "Q": 2}
 SEX_MAPPING = {"male": 0, "female": 1}
 
 
-
 def setup_logging() -> None:
     """Configure logging for CLI execution."""
     logging.basicConfig(
         level=logging.INFO,
         format="%(asctime)s - %(levelname)s - %(message)s",
     )
-
 
 
 def load_raw_dataset(raw_path: Path) -> pd.DataFrame:
@@ -59,7 +57,6 @@ def load_raw_dataset(raw_path: Path) -> pd.DataFrame:
             "Download Kaggle Titanic train.csv and place it at data/raw/train.csv."
         )
     return pd.read_csv(raw_path)
-
 
 
 def extract_title(name: str) -> str:
@@ -87,7 +84,6 @@ def extract_title(name: str) -> str:
     return title
 
 
-
 def handle_missing_values(df: pd.DataFrame) -> pd.DataFrame:
     """Fill missing values using robust defaults."""
     cleaned_df = df.copy()
@@ -95,7 +91,6 @@ def handle_missing_values(df: pd.DataFrame) -> pd.DataFrame:
     cleaned_df["Embarked"] = cleaned_df["Embarked"].fillna(cleaned_df["Embarked"].mode()[0])
     cleaned_df["Fare"] = cleaned_df["Fare"].fillna(cleaned_df["Fare"].median())
     return cleaned_df
-
 
 
 def encode_categorical_variables(df: pd.DataFrame) -> pd.DataFrame:
@@ -107,7 +102,6 @@ def encode_categorical_variables(df: pd.DataFrame) -> pd.DataFrame:
     return encoded_df
 
 
-
 def engineer_features(df: pd.DataFrame) -> pd.DataFrame:
     """Create engineered features for the Titanic dataset."""
     featured_df = df.copy()
@@ -115,7 +109,6 @@ def engineer_features(df: pd.DataFrame) -> pd.DataFrame:
     featured_df["FamilySize"] = featured_df["SibSp"] + featured_df["Parch"] + 1
     featured_df["IsAlone"] = (featured_df["FamilySize"] == 1).astype(int)
     return featured_df
-
 
 
 def preprocess_dataframe(df: pd.DataFrame) -> pd.DataFrame:
@@ -132,13 +125,11 @@ def preprocess_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     return encoded_df[final_columns].copy()
 
 
-
 def split_features_target(df: pd.DataFrame) -> Tuple[pd.DataFrame, pd.Series]:
     """Split processed dataframe into features and target."""
     features = df[FEATURE_COLUMNS].copy()
     target = df[TARGET_COLUMN].copy()
     return features, target
-
 
 
 def scale_features(
@@ -152,12 +143,10 @@ def scale_features(
     return x_train_scaled, x_test_scaled, scaler
 
 
-
 def save_processed_dataset(processed_df: pd.DataFrame, output_path: Path) -> None:
     """Save processed dataset to disk."""
     output_path.parent.mkdir(parents=True, exist_ok=True)
     processed_df.to_csv(output_path, index=False)
-
 
 
 def parse_args() -> argparse.Namespace:
@@ -176,7 +165,6 @@ def parse_args() -> argparse.Namespace:
         help="Path to save processed dataset",
     )
     return parser.parse_args()
-
 
 
 def main() -> None:

@@ -15,11 +15,13 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, roc_auc_score
 from sklearn.model_selection import cross_val_score, train_test_split
+from sklearn.preprocessing import StandardScaler
 
 from preprocess import (
     DEFAULT_RAW_PATH,
     FEATURE_COLUMNS,
     TARGET_COLUMN,
+    load_raw_dataset,
     preprocess_dataframe,
     scale_features,
 )
@@ -33,14 +35,12 @@ DEFAULT_SCALER_PATH = ROOT_DIR / "outputs" / "scaler.joblib"
 DEFAULT_METRICS_PATH = ROOT_DIR / "outputs" / "metrics.json"
 
 
-
 def setup_logging() -> None:
     """Configure logging for model training."""
     logging.basicConfig(
         level=logging.INFO,
         format="%(asctime)s - %(levelname)s - %(message)s",
     )
-
 
 
 def evaluate_candidate(
@@ -55,7 +55,6 @@ def evaluate_candidate(
         "accuracy": float(accuracy_score(y_test, y_pred)),
         "roc_auc": float(roc_auc_score(y_test, y_prob)),
     }
-
 
 
 def train_models(
@@ -152,7 +151,6 @@ def train_models(
     return model_bundle, all_metrics, selected_scaler
 
 
-
 def save_artifacts(
     model_bundle: dict,
     scaler,
@@ -176,7 +174,6 @@ def save_artifacts(
         json.dump(metrics, metrics_file, indent=2)
 
 
-
 def save_splits(
     x_train: pd.DataFrame,
     y_train: pd.Series,
@@ -198,7 +195,6 @@ def save_splits(
     test_df.to_csv(test_path, index=False)
 
 
-
 def parse_args() -> argparse.Namespace:
     """Parse CLI arguments for training."""
     parser = argparse.ArgumentParser(description="Train Titanic survival models")
@@ -217,17 +213,17 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-
 def main() -> None:
     """Run the model training pipeline."""
     setup_logging()
     args = parse_args()
 
     logging.info("Loading raw Titanic data from %s", args.raw_path)
-    raw_df = pd.read_csv(args.raw_path)
+    raw_df = load_raw_dataset(args.raw_path)
 
     logging.info("Preprocessing data")
     processed_df = preprocess_dataframe(raw_df)
+    args.processed_path.parent.mkdir(parents=True, exist_ok=True)
     processed_df.to_csv(args.processed_path, index=False)
 
     x_data = processed_df[FEATURE_COLUMNS]

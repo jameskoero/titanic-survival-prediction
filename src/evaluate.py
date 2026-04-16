@@ -35,7 +35,6 @@ DEFAULT_ROC_PATH = ROOT_DIR / "outputs" / "roc_curve.png"
 DEFAULT_REPORT_PATH = ROOT_DIR / "report" / "titanic_report.pdf"
 
 
-
 def setup_logging() -> None:
     """Configure logging for evaluation pipeline."""
     logging.basicConfig(
@@ -44,13 +43,11 @@ def setup_logging() -> None:
     )
 
 
-
 def load_artifacts(model_path: Path, scaler_path: Path) -> Tuple[dict, object | None]:
     """Load trained model and optional scaler."""
     model_bundle = joblib.load(model_path)
     scaler = joblib.load(scaler_path) if scaler_path.exists() else None
     return model_bundle, scaler
-
 
 
 def evaluate_model(
@@ -85,7 +82,6 @@ def evaluate_model(
     return metrics
 
 
-
 def save_confusion_matrix(y_true, y_pred, output_path: Path) -> None:
     """Generate and save confusion matrix visualization."""
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -98,7 +94,6 @@ def save_confusion_matrix(y_true, y_pred, output_path: Path) -> None:
     fig.tight_layout()
     fig.savefig(output_path, dpi=300)
     plt.close(fig)
-
 
 
 def save_roc_curve(y_true, y_prob, output_path: Path) -> None:
@@ -120,7 +115,6 @@ def save_roc_curve(y_true, y_prob, output_path: Path) -> None:
     plt.close(fig)
 
 
-
 def summarize_eda_insights(processed_df: pd.DataFrame) -> Dict[str, float]:
     """Compute compact EDA insights for the report."""
     insights = {
@@ -137,7 +131,6 @@ def summarize_eda_insights(processed_df: pd.DataFrame) -> Dict[str, float]:
         ),
     }
     return insights
-
 
 
 def generate_pdf_report(
@@ -200,7 +193,6 @@ def generate_pdf_report(
         plt.close(fig3)
 
 
-
 def persist_metrics(metrics_payload: Dict[str, object], metrics_path: Path) -> None:
     """Save evaluation metrics to JSON without raw arrays."""
     metrics_path.parent.mkdir(parents=True, exist_ok=True)
@@ -212,7 +204,6 @@ def persist_metrics(metrics_payload: Dict[str, object], metrics_path: Path) -> N
     }
     with metrics_path.open("w", encoding="utf-8") as metrics_file:
         json.dump(metrics_to_store, metrics_file, indent=2)
-
 
 
 def parse_args() -> argparse.Namespace:
@@ -227,7 +218,6 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--roc-curve-path", type=Path, default=DEFAULT_ROC_PATH)
     parser.add_argument("--report-path", type=Path, default=DEFAULT_REPORT_PATH)
     return parser.parse_args()
-
 
 
 def main() -> None:
@@ -264,7 +254,11 @@ def main() -> None:
     logging.info("Persisting evaluation metrics to %s", args.metrics_path)
     persist_metrics(metrics_payload, args.metrics_path)
 
-    logging.info("Evaluation complete | Accuracy: %.4f | ROC-AUC: %.4f", metrics_payload["accuracy"], metrics_payload["roc_auc"])
+    logging.info(
+        "Evaluation complete | Accuracy: %.4f | ROC-AUC: %.4f",
+        metrics_payload["accuracy"],
+        metrics_payload["roc_auc"],
+    )
 
 
 if __name__ == "__main__":
