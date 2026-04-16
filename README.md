@@ -71,7 +71,7 @@ Evaluation files are generated in `outputs/`:
 
 - Algorithm: Logistic Regression (`scikit-learn`)
 - Feature set: `Pclass`, `Sex`, `Age`, `Fare`, `Embarked`, `FamilySize`, `IsAlone`, `Title`
-- Typical benchmark with fixed split (`random_state=42`): ~0.80 accuracy and ~0.85+ ROC-AUC
+- Typical benchmark with default split settings (`test_size=0.2`, `random_state=42`): ~0.80 accuracy and ~0.85+ ROC-AUC
 
 ## Author
 

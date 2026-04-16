@@ -11,7 +11,12 @@ from sklearn.metrics import accuracy_score, roc_auc_score
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
-from constants import FEATURE_COLUMNS, TARGET_COLUMN
+from constants import (
+    DEFAULT_RANDOM_STATE,
+    DEFAULT_TEST_SIZE,
+    FEATURE_COLUMNS,
+    TARGET_COLUMN,
+)
 
 
 def parse_args() -> argparse.Namespace:
@@ -40,6 +45,18 @@ def parse_args() -> argparse.Namespace:
         default=Path("outputs/train_metrics.json"),
         help="Path to save training metrics",
     )
+    parser.add_argument(
+        "--test-size",
+        type=float,
+        default=DEFAULT_TEST_SIZE,
+        help="Proportion of dataset to use for testing",
+    )
+    parser.add_argument(
+        "--random-state",
+        type=int,
+        default=DEFAULT_RANDOM_STATE,
+        help="Random seed used for train/test split and model training",
+    )
     return parser.parse_args()
 
 
@@ -51,14 +68,14 @@ def main() -> None:
     y = df[TARGET_COLUMN]
 
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.2, random_state=42, stratify=y
+        X, y, test_size=args.test_size, random_state=args.random_state, stratify=y
     )
 
     scaler = StandardScaler()
     X_train_scaled = scaler.fit_transform(X_train)
     X_test_scaled = scaler.transform(X_test)
 
-    model = LogisticRegression(max_iter=1000, random_state=42)
+    model = LogisticRegression(max_iter=1000, random_state=args.random_state)
     model.fit(X_train_scaled, y_train)
 
     y_pred = model.predict(X_test_scaled)

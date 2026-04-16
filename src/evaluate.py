@@ -17,7 +17,12 @@ from sklearn.metrics import (
 )
 from sklearn.model_selection import train_test_split
 
-from constants import FEATURE_COLUMNS, TARGET_COLUMN
+from constants import (
+    DEFAULT_RANDOM_STATE,
+    DEFAULT_TEST_SIZE,
+    FEATURE_COLUMNS,
+    TARGET_COLUMN,
+)
 
 
 def parse_args() -> argparse.Namespace:
@@ -58,6 +63,18 @@ def parse_args() -> argparse.Namespace:
         default=Path("outputs/evaluation_metrics.json"),
         help="Path to save evaluation metrics",
     )
+    parser.add_argument(
+        "--test-size",
+        type=float,
+        default=DEFAULT_TEST_SIZE,
+        help="Proportion of dataset used for testing during training",
+    )
+    parser.add_argument(
+        "--random-state",
+        type=int,
+        default=DEFAULT_RANDOM_STATE,
+        help="Random seed used for train/test split during training",
+    )
     return parser.parse_args()
 
 
@@ -69,7 +86,7 @@ def main() -> None:
     y = df[TARGET_COLUMN]
 
     _, X_test, _, y_test = train_test_split(
-        X, y, test_size=0.2, random_state=42, stratify=y
+        X, y, test_size=args.test_size, random_state=args.random_state, stratify=y
     )
 
     model = joblib.load(args.model_path)

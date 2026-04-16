@@ -36,7 +36,7 @@ def _extract_title(name: str) -> str:
     return replacements.get(title, title)
 
 
-def preprocess_dataframe(df: pd.DataFrame) -> pd.DataFrame:
+def preprocess_dataframe(df: pd.DataFrame, include_target: bool = True) -> pd.DataFrame:
     processed = df.copy()
 
     processed["Title"] = processed["Name"].fillna("").map(_extract_title)
@@ -51,7 +51,7 @@ def preprocess_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     processed["Embarked"] = processed["Embarked"].map(EMBARKED_MAP).fillna(0).astype(int)
     processed["Title"] = processed["Title"].map(TITLE_MAP).fillna(0).astype(int)
 
-    required_cols = FEATURE_COLUMNS + [TARGET_COLUMN]
+    required_cols = FEATURE_COLUMNS + ([TARGET_COLUMN] if include_target else [])
     missing_cols = [c for c in required_cols if c not in processed.columns]
     if missing_cols:
         raise ValueError(f"Missing required columns after preprocessing: {missing_cols}")
@@ -59,9 +59,9 @@ def preprocess_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     return processed[required_cols]
 
 
-def preprocess_file(input_csv: Path, output_csv: Path) -> Path:
+def preprocess_file(input_csv: Path, output_csv: Path, include_target: bool = True) -> Path:
     df = pd.read_csv(input_csv)
-    processed = preprocess_dataframe(df)
+    processed = preprocess_dataframe(df, include_target=include_target)
     output_csv.parent.mkdir(parents=True, exist_ok=True)
     processed.to_csv(output_csv, index=False)
     return output_csv
@@ -76,12 +76,18 @@ def parse_args() -> argparse.Namespace:
         default=Path("data/processed/train_processed.csv"),
         help="Path to processed CSV",
     )
+    parser.add_argument(
+        "--include-target",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Whether to require and include the target column in the output",
+    )
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
-    output_path = preprocess_file(args.input, args.output)
+    output_path = preprocess_file(args.input, args.output, include_target=args.include_target)
     print(f"Processed dataset written to {output_path}")
 
 
