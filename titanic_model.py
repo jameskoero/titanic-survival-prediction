@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import (accuracy_score, confusion_matrix,
-classification_report, roc_auc_score)
+classification_report, roc_auc_score, roc_curve)
 from sklearn.preprocessing import StandardScaler
 import warnings
 
@@ -71,23 +71,49 @@ print(classification_report(y_test, y_pred))
 
 # ■■ 11. PLOT CONFUSION MATRIX ■■
 cm = confusion_matrix(y_test, y_pred)
-fig, axes = plt.subplots(1, 2, figsize=(12, 4))
-axes[0].imshow(cm, cmap='Blues')
-axes[0].set_title('Confusion Matrix', fontweight='bold')
-axes[0].set_xlabel('Predicted'); axes[0].set_ylabel('Actual')
+fig_cm, ax_cm = plt.subplots(figsize=(6, 5))
+ax_cm.imshow(cm, cmap='Blues')
+ax_cm.set_title('Confusion Matrix', fontweight='bold', fontsize=14)
+ax_cm.set_xlabel('Predicted Label', fontsize=12)
+ax_cm.set_ylabel('True Label', fontsize=12)
+ax_cm.set_xticks([0, 1]); ax_cm.set_yticks([0, 1])
+ax_cm.set_xticklabels(['Not Survived', 'Survived'])
+ax_cm.set_yticklabels(['Not Survived', 'Survived'])
 for i in range(2):
     for j in range(2):
-        axes[0].text(j, i, str(cm[i,j]), ha='center', va='center',
-        color='white' if cm[i,j]>cm.max()/2 else 'black', fontsize=14)
+        ax_cm.text(j, i, str(cm[i, j]), ha='center', va='center',
+        color='white' if cm[i, j] > cm.max() / 2 else 'black', fontsize=16)
+plt.tight_layout()
+plt.savefig('confusion_matrix.png', dpi=150, bbox_inches='tight')
+plt.close(fig_cm)
+print('Chart saved: confusion_matrix.png')
 
-# Feature importance (coefficients)
-coef_df = pd.DataFrame({'Feature':features, 'Coefficient':model.coef_[0]})
+# ■■ 12. PLOT ROC CURVE ■■
+fpr, tpr, _ = roc_curve(y_test, y_prob)
+auc_score = roc_auc_score(y_test, y_prob)
+fig_roc, ax_roc = plt.subplots(figsize=(6, 5))
+ax_roc.plot(fpr, tpr, color='steelblue', lw=2,
+            label=f'ROC Curve (AUC = {auc_score:.3f})')
+ax_roc.plot([0, 1], [0, 1], color='gray', lw=1, linestyle='--',
+            label='Random Classifier')
+ax_roc.set_xlabel('False Positive Rate', fontsize=12)
+ax_roc.set_ylabel('True Positive Rate', fontsize=12)
+ax_roc.set_title('ROC Curve', fontweight='bold', fontsize=14)
+ax_roc.legend(loc='lower right')
+plt.tight_layout()
+plt.savefig('roc_curve.png', dpi=150, bbox_inches='tight')
+plt.close(fig_roc)
+print('Chart saved: roc_curve.png')
+
+# ■■ 13. PLOT FEATURE COEFFICIENTS ■■
+coef_df = pd.DataFrame({'Feature': features, 'Coefficient': model.coef_[0]})
 coef_df = coef_df.reindex(coef_df['Coefficient'].abs().sort_values(ascending=True).index)
-axes[1].barh(coef_df['Feature'], coef_df['Coefficient'],
-color=['red' if c<0 else 'green' for c in coef_df['Coefficient']])
-axes[1].set_title('Feature Coefficients', fontweight='bold')
-axes[1].axvline(0, color='black', linewidth=0.8)
+fig_coef, ax_coef = plt.subplots(figsize=(7, 4))
+ax_coef.barh(coef_df['Feature'], coef_df['Coefficient'],
+             color=['red' if c < 0 else 'green' for c in coef_df['Coefficient']])
+ax_coef.set_title('Feature Coefficients', fontweight='bold')
+ax_coef.axvline(0, color='black', linewidth=0.8)
 plt.tight_layout()
 plt.savefig('titanic_results.png', dpi=150, bbox_inches='tight')
-plt.show()
+plt.close(fig_coef)
 print('Chart saved: titanic_results.png')
