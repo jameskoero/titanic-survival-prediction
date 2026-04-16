@@ -37,7 +37,7 @@ git clone https://github.com/jameskoero/titanic-survival-prediction.git && cd ti
 pip install -r requirements.txt
 
 # 3. Run the model
-python main.py
+python titanic_model.py
 ```
 
 ---
