@@ -8,38 +8,38 @@ This README now displays 10 visual results from the project.
 
 ![Project Banner](banner-3.png)
 
-2. **Confusion Matrix (Version A)**
+2. **Confusion Matrix**
 
-![Confusion Matrix A](confusion_matrix-9.png)
+![Confusion Matrix](confusion_matrix-9.png)
 
-3. **Confusion Matrix (Version B)**
+3. **ROC Curve**
 
-![Confusion Matrix B](outputs/confusion_matrix.png)
+![ROC Curve](roc_curve-15.png)
 
-4. **ROC Curve (Version A)**
+4. **Feature Distribution**
 
-![ROC Curve A](roc_curve-15.png)
+![Feature Distribution](feature_distribution-5.png)
 
-5. **ROC Curve (Version B)**
-
-![ROC Curve B](outputs/roc_curve.png)
-
-6. **Feature Distribution (Version A)**
-
-![Feature Distribution A](feature_distribution-5.png)
-
-7. **Feature Distribution (Version B)**
-
-![Feature Distribution B](outputs/feature_distribution.png)
-
-8. **Feature Importance**
+5. **Feature Importance**
 
 ![Feature Importance](feature_importance-2.png)
 
-9. **ROC Curve (Additional View)**
+6. **Model Results Overview**
 
-![ROC Curve Additional View](roc_curve-15.png)
+![Model Results Overview](outputs/model_results_overview.png)
 
-10. **Feature Distribution (Additional View)**
+7. **Generated Results Snapshot**
 
-![Feature Distribution Additional View](feature_distribution-5.png)
+![Generated Results Snapshot](outputs/generated_results_snapshot.png)
+
+8. **Classification Performance Panel**
+
+![Classification Performance Panel](outputs/classification_performance_panel.png)
+
+9. **Feature Insights Panel**
+
+![Feature Insights Panel](outputs/feature_insights_panel.png)
+
+10. **Full Visual Gallery**
+
+![Full Visual Gallery](outputs/full_visual_gallery.png)
