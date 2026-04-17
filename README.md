@@ -96,7 +96,8 @@ titanic-survival-prediction/
 ├── outputs/
 │   ├── confusion_matrix.png      ← Confusion matrix visualisation
 │   ├── roc_curve.png             ← ROC curve with AUC score
-│   └── feature_distribution.png ← Feature analysis by survival status
+│   ├── feature_distribution.png  ← Feature analysis by survival status
+│   └── feature_importance.png    ← Model coefficient importance chart
 │
 ├── Titanic Survival prediction final.pdf  ← Full project report (PDF)
 └── train.csv                             ← Download from Kaggle (see instructions below)
@@ -120,7 +121,7 @@ pip install -r requirements.txt
 **3. Download the dataset**
 - Go to: https://www.kaggle.com/c/titanic/data
 - Download `train.csv`
-- Place it in the project root folder
+- Place it in the project root folder (same folder as `titanic_model.py`)
 
 **4. Run the model**
 ```bash
