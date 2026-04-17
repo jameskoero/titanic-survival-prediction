@@ -51,7 +51,8 @@ From the included model outputs/visual artifacts:
 
 - **Accuracy:** ~**81%**
 - **ROC-AUC:** ~**0.86**
-- **Confusion Matrix Counts:** TN=100, FP=11, FN=23, TP=45
+- **Confusion Matrix Counts:** TN=100, FP=11, FN=23, TP=45  
+  (TN=True Negatives, FP=False Positives, FN=False Negatives, TP=True Positives)
 
 ## Results and Key Findings
 
@@ -97,6 +98,7 @@ titanic-survival-prediction/
 ├── environment.yml
 ├── README.md
 ├── Titanic Survival prediction final.pdf
+├── train.csv  # required input dataset (Kaggle Titanic competition)
 ├── banner-3.png
 ├── confusion_matrix-9.png
 ├── roc_curve-15.png
@@ -108,7 +110,8 @@ titanic-survival-prediction/
 │   ├── roc_curve.png
 │   └── feature_distribution.png
 └── tests/
-    └── test_project_files.py
+    ├── test_project_files.py
+    └── test_readme_consolidation.py
 ```
 
 ## How to Run
@@ -130,7 +133,8 @@ conda activate titanic-survival-prediction
 python titanic_model.py
 ```
 
-> `titanic_model.py` expects `train.csv` in the project root.
+> `titanic_model.py` expects `train.csv` in the project root.  
+> You can download it from: <https://www.kaggle.com/competitions/titanic/data>
 
 ## ML Pipeline - Step by Step
 
@@ -168,7 +172,7 @@ python titanic_model.py
 
 ## Full Report
 
-- [Titanic Survival Prediction Final Report (PDF)](Titanic%20Survival%20prediction%20final.pdf)
+- [Titanic Survival Prediction Final Report (PDF)](Titanic Survival prediction final.pdf)
 
 ## Connect
 
@@ -178,4 +182,5 @@ python titanic_model.py
 
 ## License
 
-No explicit `LICENSE` file is currently present in this repository. Add one if you want to define formal open-source usage terms.
+No explicit `LICENSE` file is currently present in this repository.  
+Until a license is added, usage defaults to standard copyright protections (all rights reserved).

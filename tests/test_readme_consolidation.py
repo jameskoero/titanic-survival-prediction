@@ -4,6 +4,15 @@ from pathlib import Path
 
 
 README_PATH = Path('README.md')
+ASSET_BASE = Path('.')
+REQUIRED_README_ASSETS = [
+    'banner-3.png',
+    'confusion_matrix-9.png',
+    'roc_curve-15.png',
+    'feature_distribution-5.png',
+    'feature_importance-2.png',
+    'Titanic Survival prediction final.pdf',
+]
 
 
 def test_readme_contains_required_sections():
@@ -31,13 +40,6 @@ def test_readme_contains_required_sections():
 
 
 def test_readme_visual_assets_exist():
-    """README visualization assets should resolve to existing files."""
-    for asset in [
-        'banner-3.png',
-        'confusion_matrix-9.png',
-        'roc_curve-15.png',
-        'feature_distribution-5.png',
-        'feature_importance-2.png',
-        'Titanic Survival prediction final.pdf',
-    ]:
-        assert Path(asset).is_file()
+    """README visualization assets should resolve to existing files in repo root."""
+    for asset in REQUIRED_README_ASSETS:
+        assert (ASSET_BASE / asset).is_file(), f"Asset {asset} not found"
