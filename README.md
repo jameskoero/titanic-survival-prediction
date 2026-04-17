@@ -6,23 +6,23 @@ This README now displays 10 visual results from the project.
 
 1. **Project Banner**
 
-![Project Banner](banner-3.png)
+![Project Banner](outputs/project_banner.png)
 
 2. **Confusion Matrix**
 
-![Confusion Matrix](confusion_matrix-9.png)
+![Confusion Matrix](outputs/confusion_matrix_primary.png)
 
 3. **ROC Curve**
 
-![ROC Curve](roc_curve-15.png)
+![ROC Curve](outputs/roc_curve_primary.png)
 
 4. **Feature Distribution**
 
-![Feature Distribution](feature_distribution-5.png)
+![Feature Distribution](outputs/feature_distribution_primary.png)
 
 5. **Feature Importance**
 
-![Feature Importance](feature_importance-2.png)
+![Feature Importance](outputs/feature_importance_primary.png)
 
 6. **Model Results Overview**
 
