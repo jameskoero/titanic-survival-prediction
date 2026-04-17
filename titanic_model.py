@@ -108,7 +108,7 @@ plt.colorbar(im, ax=ax)
 plt.tight_layout()
 plt.savefig('outputs/confusion_matrix.png', dpi=300, bbox_inches='tight')
 plt.close()
-print('✓ Saved: confusion_matrix.png')
+print('✓ Saved: outputs/confusion_matrix.png')
 
 # ■■ 12. PLOT ROC CURVE ■■
 fpr, tpr, _ = roc_curve(y_test, y_prob)
@@ -139,7 +139,7 @@ ax.grid(True, alpha=0.3, linestyle='--')
 plt.tight_layout()
 plt.savefig('outputs/roc_curve.png', dpi=300, bbox_inches='tight')
 plt.close()
-print('✓ Saved: roc_curve.png')
+print('✓ Saved: outputs/roc_curve.png')
 
 # ■■ 13. PLOT FEATURE DISTRIBUTION ■■
 X_test_orig = pd.DataFrame(X_test, columns=features)
@@ -191,7 +191,7 @@ for idx, (feature, label) in enumerate(plot_features):
 plt.tight_layout()
 plt.savefig('outputs/feature_distribution.png', dpi=300, bbox_inches='tight')
 plt.close()
-print('✓ Saved: feature_distribution.png')
+print('✓ Saved: outputs/feature_distribution.png')
 
 # ■■ 14. PLOT FEATURE IMPORTANCE ■■
 fig, ax = plt.subplots(figsize=(10, 6))
