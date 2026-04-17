@@ -27,3 +27,12 @@ def test_environment_has_conda_dependencies():
     assert 'channels:' in content
     assert 'dependencies:' in content
     assert 'python=' in content
+
+
+def test_titanic_model_saves_visualizations_to_outputs_folder():
+    """Ensure visual outputs are saved under outputs/ paths."""
+    content = Path('titanic_model.py').read_text(encoding='utf-8')
+    assert "plt.savefig('outputs/confusion_matrix.png'" in content
+    assert "plt.savefig('outputs/roc_curve.png'" in content
+    assert "plt.savefig('outputs/feature_distribution.png'" in content
+    assert "plt.savefig('outputs/feature_importance.png'" in content

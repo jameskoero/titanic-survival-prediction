@@ -106,7 +106,7 @@ for i in range(2):
 
 plt.colorbar(im, ax=ax)
 plt.tight_layout()
-plt.savefig('confusion_matrix.png', dpi=300, bbox_inches='tight')
+plt.savefig('outputs/confusion_matrix.png', dpi=300, bbox_inches='tight')
 plt.close()
 print('✓ Saved: confusion_matrix.png')
 
@@ -137,7 +137,7 @@ ax.set_title(
 ax.legend(loc='lower right', fontsize=11, framealpha=0.9)
 ax.grid(True, alpha=0.3, linestyle='--')
 plt.tight_layout()
-plt.savefig('roc_curve.png', dpi=300, bbox_inches='tight')
+plt.savefig('outputs/roc_curve.png', dpi=300, bbox_inches='tight')
 plt.close()
 print('✓ Saved: roc_curve.png')
 
@@ -189,7 +189,7 @@ for idx, (feature, label) in enumerate(plot_features):
     ax.grid(True, alpha=0.3, linestyle='--', axis='y')
 
 plt.tight_layout()
-plt.savefig('feature_distribution.png', dpi=300, bbox_inches='tight')
+plt.savefig('outputs/feature_distribution.png', dpi=300, bbox_inches='tight')
 plt.close()
 print('✓ Saved: feature_distribution.png')
 
@@ -217,6 +217,6 @@ ax.set_title(
 ax.axvline(0, color='black', linewidth=1)
 ax.grid(True, alpha=0.3, linestyle='--', axis='x')
 plt.tight_layout()
-plt.savefig('feature_importance.png', dpi=300, bbox_inches='tight')
+plt.savefig('outputs/feature_importance.png', dpi=300, bbox_inches='tight')
 plt.close()
 print('\n✓ All visualizations generated successfully!')
