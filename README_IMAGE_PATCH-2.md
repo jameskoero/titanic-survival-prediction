@@ -1,12 +1,5 @@
-## Banner (top of README, right after the title heading)
-![Titanic Survival Prediction Banner](images/banner.png)
+# README Image Patch (Archived)
 
-## Under "Results" section
-![Confusion Matrix](images/confusion_matrix.png)
+Image guidance from this file has been consolidated into:
 
-## Under "Model Performance Visualizations" section
-![ROC Curve](images/roc_curve.png)
-
-![Feature Distribution](images/feature_distribution.png)
-
-![Feature Importance](images/feature_importance.png)
+- [README.md](README.md)
