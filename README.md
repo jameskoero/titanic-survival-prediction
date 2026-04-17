@@ -99,9 +99,7 @@ titanic-survival-prediction/
 │   └── feature_distribution.png ← Feature analysis by survival status
 │
 ├── Titanic Survival prediction final.pdf  ← Full project report (PDF)
-│
-└── data/
-    └── train.csv                 ← Download from Kaggle (see instructions below)
+└── train.csv                             ← Download from Kaggle (see instructions below)
 ```
 
 ---
@@ -134,7 +132,7 @@ The script will:
 - Engineer features (Title, FamilySize, IsAlone)
 - Train a Logistic Regression classifier
 - Print accuracy, ROC-AUC, and classification report
-- Save `titanic_results.png` with confusion matrix and feature coefficients
+- Save `confusion_matrix.png`, `roc_curve.png`, `feature_distribution.png`, and `feature_importance.png`
 
 ---
 
