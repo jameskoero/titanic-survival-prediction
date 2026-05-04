@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Data — Kaggle ToS forbids redistributing train.csv
+train.csv
+test.csv
+
+# Pipeline outputs (regenerable). Charts go to images/ and DO ship.
+outputs/
+*.joblib
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
