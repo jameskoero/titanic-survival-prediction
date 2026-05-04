@@ -167,11 +167,11 @@ Bootstrap 95% CI on ROC-AUC: **(0.79, 0.89)** — statistically distinct from 0.
 
 ### Confusion Matrix
 
-![Confusion matrix](images/03_confusion_matrix.png)
+![Confusion matrix](images/03_confusion_matrix-1.png)
 
 ### ROC and Precision–Recall Curves
 
-![ROC and PR curves](images/04_roc_pr_curves.png)
+![ROC and PR curves](images/04_roc_pr_curves-1.png)
 
 ### Calibration
 
@@ -191,7 +191,7 @@ noise floor (the *Bayes error rate* for this problem).
 
 ### Operational Threshold Tuning
 
-![Threshold tuning](images/07_threshold_tuning.png)
+![Threshold tuning](images/07_threshold_tuning-2.png)
 
 For an evacuation-style task, missing a real survivor is worse than a false alarm.
 **F2** weights recall 4× higher than precision; the F2-optimal threshold is the right
