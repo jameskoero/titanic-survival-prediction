@@ -1,10 +1,64 @@
+# Python
 __pycache__/
 *.py[cod]
+*$py.class
+*.so
+*.pyo
+*.pyd
+
+# Virtual environments
 .env
+.venv
+env/
 venv/
+ENV/
+
+# Distribution / packaging
+.eggs/
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Data files (download separately via script)
 data/
 *.csv
+
+# ML model artefacts (too large for git — use Releases)
 *.pkl
+*.h5
+*.joblib
+*.model
+outputs/
+
+# Logs
+logs/
 *.log
-.ipynb_checkpoints/
+
+# Environment variables — never commit secrets
+.env
+.env.local
+.env.production
+
+# OS
 .DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Coverage / test cache
+htmlcov/
+.coverage
+.pytest_cache/
+
+# Node (if project has a frontend)
+node_modules/
+dist/
+build/
