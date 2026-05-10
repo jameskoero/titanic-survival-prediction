@@ -1,5 +1,0 @@
-# CMDMS — Carwash Main Altar Digital Management System
-# No third-party libraries required.
-# Uses Python standard library only: os, json, datetime
-#
-# Python 3.6+
