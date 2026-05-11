@@ -314,3 +314,68 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 
 
+
+---
+
+## 📸 Visual Results
+
+
+
+![EDA Overview](images/01_eda_overview.png)
+
+
+
+
+![Model Comparison](images/02_model_comparison.png)
+
+
+
+
+![Confusion Matrix](images/03_confusion_matrix.png)
+
+
+
+
+![ROC & PR Curves](images/04_roc_pr_curves.png)
+
+
+
+
+![Calibration](images/05_calibration.png)
+
+
+
+
+![Learning Curve](images/06_learning_curve.png)
+
+
+
+
+![Threshold Tuning](images/07_threshold_tuning.png)
+
+
+
+
+![Coefficients](images/08_coefficients.png)
+
+
+
+
+![Permutation Importance](images/09_permutation_importance.png)
+
+
+
+
+![SHAP Andrews](images/10_shap_andrews.png)
+
+
+
+
+![SHAP Dean](images/11_shap_dean.png)
+
+
+
+
+![SHAP Brown](images/12_shap_brown.png)
+
+
