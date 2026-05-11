@@ -347,7 +347,7 @@ python titanic_model.py
 - [x] 3-tier data download fallback
 - [x] `tests/test_pipeline.py` — 12 pytest unit tests + CI badge
 - [ ] FastAPI endpoint (`POST /predict` → probability + SHAP breakdown)
-- [ ] Streamlit web demo
+- [x] Streamlit web demo — live at https://titanic-koero.streamlit.app
 
 ---
 
