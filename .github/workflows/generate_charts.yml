@@ -1,0 +1,21 @@
+name: Generate Missing Charts
+
+on:
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install scikit-learn pandas numpy matplotlib joblib
+      - run: python titanic_model.py
+      - run: |
+          git config user.email "jmskoero@gmail.com"
+          git config user.name "James Koero"
+          git add images/
+          git commit -m "chore: auto-generate all 13 charts" || echo "nothing to commit"
+          git push
