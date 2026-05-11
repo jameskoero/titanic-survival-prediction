@@ -346,7 +346,7 @@ python titanic_model.py
 - [x] Error breakdown by Pclass × Sex
 - [x] 3-tier data download fallback
 - [x] `tests/test_pipeline.py` — 12 pytest unit tests + CI badge
-- [ ] FastAPI endpoint (`POST /predict` → probability + SHAP breakdown)
+- [x] FastAPI endpoint — live at https://titanic-api-56uu.onrender.com/docs
 - [x] Streamlit web demo — live at https://titanic-koero.streamlit.app
 
 ---
