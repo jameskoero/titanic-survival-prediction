@@ -179,13 +179,7 @@ Charts: [`10_shap_andrews.png`](images/10_shap_andrews.png) ·
 
 ---
 
-## 📈 13 Charts Generated
-
-**`images/00_banner.png`** — Navy/gold header
-
-![Banner](images/00_banner.png)
-
----
+## 📈 12 Evaluation Charts Generated
 
 **`images/01_eda_overview.png`** — 6-panel EDA: class×sex, age, fare, family, embarkation, missingness
 
@@ -371,7 +365,6 @@ MIT License — see [LICENSE](LICENSE) for details.
 ---
 
 > *"What is living in YOUR model's 18% error rate?"*
-
 
 
 
