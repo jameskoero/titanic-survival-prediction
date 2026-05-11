@@ -1,1 +1,5 @@
-scikit-learn>=1.3pandas>=1.5numpy>=1.24matplotlib>=3.5joblib>=1.3
+scikit-learn>=1.3
+pandas>=1.5
+numpy>=1.24
+matplotlib>=3.5
+joblib>=1.3
