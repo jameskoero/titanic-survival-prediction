@@ -181,21 +181,81 @@ Charts: [`10_shap_andrews.png`](images/10_shap_andrews.png) ·
 
 ## 📈 13 Charts Generated
 
-| File | Description |
-|------|-------------|
-| `images/00_banner.png` | Navy/gold header |
-| `images/01_eda_overview.png` | 6-panel EDA: class×sex, age, fare, family, embarkation, missingness |
-| `images/02_model_comparison.png` | 4-model CV benchmark |
-| `images/03_confusion_matrix.png` | Hold-out confusion matrix |
-| `images/04_roc_pr_curves.png` | ROC (AUC=0.8661) + Precision-Recall |
-| `images/05_calibration.png` | Reliability curve — Brier=0.1368 |
-| `images/06_learning_curve.png` | Train vs validation F1 — bias/variance |
-| `images/07_threshold_tuning.png` | F1/F2 optimal thresholds (0.36 / 0.31) |
-| `images/08_coefficients.png` | Standardised LR coefficients |
-| `images/09_permutation_importance.png` | Permutation Δ F1 by feature |
-| `images/10_shap_andrews.png` | SHAP waterfall — Thomas Andrews |
-| `images/11_shap_dean.png` | SHAP waterfall — Millvina Dean |
-| `images/12_shap_brown.png` | SHAP waterfall — Molly Brown |
+**`images/00_banner.png`** — Navy/gold header
+
+![Banner](images/00_banner.png)
+
+---
+
+**`images/01_eda_overview.png`** — 6-panel EDA: class×sex, age, fare, family, embarkation, missingness
+
+![EDA Overview](images/01_eda_overview.png)
+
+---
+
+**`images/02_model_comparison.png`** — 4-model CV benchmark
+
+![Model Comparison](images/02_model_comparison.png)
+
+---
+
+**`images/03_confusion_matrix.png`** — Hold-out confusion matrix
+
+![Confusion Matrix](images/03_confusion_matrix.png)
+
+---
+
+**`images/04_roc_pr_curves.png`** — ROC (AUC=0.8661) + Precision-Recall
+
+![ROC & PR Curves](images/04_roc_pr_curves.png)
+
+---
+
+**`images/05_calibration.png`** — Reliability curve — Brier=0.1368
+
+![Calibration](images/05_calibration.png)
+
+---
+
+**`images/06_learning_curve.png`** — Train vs validation F1 — bias/variance
+
+![Learning Curve](images/06_learning_curve.png)
+
+---
+
+**`images/07_threshold_tuning.png`** — F1/F2 optimal thresholds (0.36 / 0.31)
+
+![Threshold Tuning](images/07_threshold_tuning.png)
+
+---
+
+**`images/08_coefficients.png`** — Standardised LR coefficients
+
+![Coefficients](images/08_coefficients.png)
+
+---
+
+**`images/09_permutation_importance.png`** — Permutation Δ F1 by feature
+
+![Permutation Importance](images/09_permutation_importance.png)
+
+---
+
+**`images/10_shap_andrews.png`** — SHAP waterfall — Thomas Andrews
+
+![SHAP Andrews](images/10_shap_andrews.png)
+
+---
+
+**`images/11_shap_dean.png`** — SHAP waterfall — Millvina Dean
+
+![SHAP Dean](images/11_shap_dean.png)
+
+---
+
+**`images/12_shap_brown.png`** — SHAP waterfall — Molly Brown
+
+![SHAP Brown](images/12_shap_brown.png)
 
 ---
 
@@ -315,67 +375,6 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 
 
----
 
-## 📸 Visual Results
-
-
-
-![EDA Overview](images/01_eda_overview.png)
-
-
-
-
-![Model Comparison](images/02_model_comparison.png)
-
-
-
-
-![Confusion Matrix](images/03_confusion_matrix.png)
-
-
-
-
-![ROC & PR Curves](images/04_roc_pr_curves.png)
-
-
-
-
-![Calibration](images/05_calibration.png)
-
-
-
-
-![Learning Curve](images/06_learning_curve.png)
-
-
-
-
-![Threshold Tuning](images/07_threshold_tuning.png)
-
-
-
-
-![Coefficients](images/08_coefficients.png)
-
-
-
-
-![Permutation Importance](images/09_permutation_importance.png)
-
-
-
-
-![SHAP Andrews](images/10_shap_andrews.png)
-
-
-
-
-![SHAP Dean](images/11_shap_dean.png)
-
-
-
-
-![SHAP Brown](images/12_shap_brown.png)
 
 
