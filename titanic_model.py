@@ -866,7 +866,7 @@ def main() -> None:
         "model_comparison": bench.to_dict(orient="records"),
         "top_coefficients":      coef_df.tail(10).to_dict(orient="records"),
         "permutation_importance": perm_df.tail(10).to_dict(orient="records"),
--    }
+    }
     with open(OUTPUT_DIR / "metrics.json", "w") as f:
         json.dump(payload, f, indent=2, default=float)
     log.info("Saved metrics.json")
