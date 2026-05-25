@@ -8,6 +8,7 @@
 [![CI](https://github.com/jameskoero/titanic-survival-prediction/actions/workflows/ci.yml/badge.svg)](https://github.com/jameskoero/titanic-survival-prediction/actions/workflows/ci.yml)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jameskoero/titanic-survival-prediction/blob/main/titanic_model.py)
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://titanic-koero.streamlit.app)
+[![Release](https://img.shields.io/github/v/release/jameskoero/titanic-survival-prediction?color=blue&label=v1.0.0)](https://github.com/jameskoero/titanic-survival-prediction/releases)
 
 ---
 
@@ -157,6 +158,14 @@ Many gave up their lifeboat seats. Thomas Andrews was the starkest case.
 **False Negatives** — predicted death, actually survived:
 Third-class women the model marked as unlikely to survive.
 Several got through by persistence, luck, or finding an unlocked deck hatch.
+
+
+#### Named Examples from the Hold-Out Set
+
+| Category | Passenger | Prediction | Actual | Why the Model Was Wrong |
+|----------|-----------|-----------|--------|------------------------|
+| **False Positive** | Thomas Andrews — 1st class, male, HasCabin, Age 39 | **91% survive** | **DIED** | Gave his lifeboat seat away. The model sees class and cabin number. It cannot see a moral decision. |
+| **False Negative** | Third-class women, no cabin, travelling alone | ~30–45% survive | **SURVIVED** | Deck gates on lower decks were locked or delayed. Some found gaps. Persistence is not a column in any CSV. |
 
 > The features that actually determined survival — proximity to a lifeboat,
 > whether the gates were locked, whether a crew member helped you —
@@ -399,6 +408,21 @@ curl -X POST https://titanic-api-56uu.onrender.com/predict \
 
 ## 🌍 Why This Matters for African ML Engineers
 
+One thing not in any tutorial: this project was built entirely on an Android phone.
+Termux terminal. PyramIDE editor. Google Colab via mobile browser for jobs that
+needed more RAM. No MacBook, no conda, no reliable broadband.
+
+When numpy refused to compile on ARM64, I had to understand the difference between
+a binary wheel and a source build — not by choice, but because the error left me
+no option. The fix: `pkg install python-numpy` first, then
+`pip install --break-system-packages` for the rest. Two hours of reading error
+messages produced one working command. That is a different kind of learning than
+following a tutorial on a fast machine.
+
+If a production pipeline runs from a phone in Kisumu with bad internet, it runs
+anywhere. That constraint shaped everything about how I built this.
+
+
 > *"I am building this from Kisumu, Kenya, mentored by Prof. Johan Loeckx at VUB AI Lab.*
 > *Production ML is not about the accuracy score.*
 > *It is about understanding what your model measures — and being honest about what it does not.*
@@ -425,12 +449,21 @@ curl -X POST https://titanic-api-56uu.onrender.com/predict \
 - [x] FastAPI endpoint — live at https://titanic-api-56uu.onrender.com/docs
 - [x] Streamlit web demo — live at https://titanic-koero.streamlit.app
 - [x] Model Card — ethics, bias, SHAP interpretation
-- [ ] LEARNINGS.md — v1 to v2 growth journey
+- [x] LEARNINGS.md — v1 to v2 growth journey
 - [ ] Zenodo DOI — citable research output
 
 ---
 
 ## 👤 Author
+
+> **On AI tooling:** GitHub Copilot was used as a coding assistant during
+> development. Every suggestion was read, tested, and understood before accepting.
+> At one point Copilot generated a tree-based SHAP approximation for what was
+> logistic regression code — the analytical formula φᵢ = βᵢ × zᵢ is exact for
+> linear models and needs no approximation. Caught it because I had read the
+> formula first. Using AI tools is part of modern ML engineering. Knowing when to
+> reject the output is the skill.
+
 
 **James Onyango Koero**
 BSc Physics & Mathematics — Moi University (2012) | Self-Taught ML Engineer | Kisumu, Kenya
