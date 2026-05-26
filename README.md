@@ -8,7 +8,8 @@
 [![CI](https://github.com/jameskoero/titanic-survival-prediction/actions/workflows/ci.yml/badge.svg)](https://github.com/jameskoero/titanic-survival-prediction/actions/workflows/ci.yml)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jameskoero/titanic-survival-prediction/blob/main/titanic_model.py)
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://titanic-koero.streamlit.app)
-[![Release](https://img.shields.io/github/v/release/jameskoero/titanic-survival-prediction?color=blue&label=v1.0.0)](https://github.com/jameskoero/titanic-survival-prediction/releases)
+[![Release](https://img.shields.io/github/v/release/jameskoero/titanic-survival-prediction?color=blue)](https://github.com/jameskoero/titanic-survival-prediction/releases)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20387973.svg)](https://doi.org/10.5281/zenodo.20387973)
 
 ---
 
@@ -159,7 +160,6 @@ Many gave up their lifeboat seats. Thomas Andrews was the starkest case.
 Third-class women the model marked as unlikely to survive.
 Several got through by persistence, luck, or finding an unlocked deck hatch.
 
-
 #### Named Examples from the Hold-Out Set
 
 | Category | Passenger | Prediction | Actual | Why the Model Was Wrong |
@@ -275,6 +275,7 @@ Charts: [`10_shap_andrews.png`](images/10_shap_andrews.png) ·
 | **Author** | James Onyango Koero (jmskoero@gmail.com) |
 | **Date** | May 2026 |
 | **Repo** | [github.com/jameskoero/titanic-survival-prediction](https://github.com/jameskoero/titanic-survival-prediction) |
+| **DOI** | [10.5281/zenodo.20387973](https://doi.org/10.5281/zenodo.20387973) |
 | **Intended Use** | Educational · Portfolio · Historical analysis |
 | **NOT for** | Modern survival prediction of real people |
 
@@ -422,7 +423,6 @@ following a tutorial on a fast machine.
 If a production pipeline runs from a phone in Kisumu with bad internet, it runs
 anywhere. That constraint shaped everything about how I built this.
 
-
 > *"I am building this from Kisumu, Kenya, mentored by Prof. Johan Loeckx at VUB AI Lab.*
 > *Production ML is not about the accuracy score.*
 > *It is about understanding what your model measures — and being honest about what it does not.*
@@ -450,7 +450,7 @@ anywhere. That constraint shaped everything about how I built this.
 - [x] Streamlit web demo — live at https://titanic-koero.streamlit.app
 - [x] Model Card — ethics, bias, SHAP interpretation
 - [x] LEARNINGS.md — v1 to v2 growth journey
-- [ ] Zenodo DOI — citable research output
+- [x] Zenodo DOI — citable research output — [10.5281/zenodo.20387973](https://doi.org/10.5281/zenodo.20387973)
 
 ---
 
@@ -463,7 +463,6 @@ anywhere. That constraint shaped everything about how I built this.
 > linear models and needs no approximation. Caught it because I had read the
 > formula first. Using AI tools is part of modern ML engineering. Knowing when to
 > reject the output is the skill.
-
 
 **James Onyango Koero**
 BSc Physics & Mathematics — Moi University (2012) | Self-Taught ML Engineer | Kisumu, Kenya
