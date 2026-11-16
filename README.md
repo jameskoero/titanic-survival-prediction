@@ -89,9 +89,7 @@ That 18% contains all the humanity.
 
 > **On metric reporting:** CV accuracy (from training folds) gives the
 > published estimate. Hold-out accuracy (unseen 20% split) is the conservative
-> real-world estimate. The [LinkedIn post](https://www.linkedin.com/in/jameskoero)
-> reported **CV accuracy 82.4% · ROC-AUC 0.868** — directionally consistent
-> with these results (hold-out 81.01%, ROC-AUC 0.8661).
+> real-world estimate. An earlier LinkedIn post reported CV accuracy 82.4% and ROC-AUC 0.868. The cross-validated benchmark above does not reproduce those figures (CV accuracy 0.7767, CV ROC-AUC 0.8299), so the tables in this README are the figures to cite.
 
 ---
 
@@ -272,7 +270,7 @@ Charts: [`10_shap_andrews.png`](images/10_shap_andrews.png) ·
 |-------|--------|
 | **Type** | Logistic Regression (scikit-learn 1.3+) |
 | **Version** | v2.0 — leak-free Pipeline |
-| **Author** | James Onyango Koero (jmskoero@gmail.com) |
+| **Author** | James Koero (jmskoero@gmail.com) |
 | **Date** | May 2026 |
 | **Repo** | [github.com/jameskoero/titanic-survival-prediction](https://github.com/jameskoero/titanic-survival-prediction) |
 | **DOI** | [10.5281/zenodo.20387973](https://doi.org/10.5281/zenodo.20387973) |
@@ -436,7 +434,7 @@ anywhere. That constraint shaped everything about how I built this.
 - [x] StratifiedKFold — preserves 38/62 class ratio per fold
 - [x] Group-aware Age imputation (Pclass × Sex median)
 - [x] HasCabin feature
-- [x] GridSearchCV on F2 — 8 C values × L1/L2
+- [x] GridSearchCV on F1 — 8 C values × L1/L2
 - [x] DummyClassifier baseline
 - [x] Bootstrap 95% CIs on accuracy, F1, ROC-AUC
 - [x] Brier score + calibration reliability curve
@@ -464,7 +462,7 @@ anywhere. That constraint shaped everything about how I built this.
 > formula first. Using AI tools is part of modern ML engineering. Knowing when to
 > reject the output is the skill.
 
-**James Onyango Koero**
+**James Koero**
 BSc Physics & Mathematics — Moi University (2012) | Self-Taught ML Engineer | Kisumu, Kenya
 📧 [jmskoero@gmail.com](mailto:jmskoero@gmail.com) · [GitHub](https://github.com/jameskoero) · [LinkedIn](https://linkedin.com/in/jameskoero)
 
