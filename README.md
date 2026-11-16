@@ -421,7 +421,7 @@ following a tutorial on a fast machine.
 If a production pipeline runs from a phone in Kisumu with bad internet, it runs
 anywhere. That constraint shaped everything about how I built this.
 
-> *"I am building this from Kisumu, Kenya, mentored by Prof. Johan Loeckx at VUB AI Lab.*
+> *"I am building this from Kisumu, Kenya.*
 > *Production ML is not about the accuracy score.*
 > *It is about understanding what your model measures — and being honest about what it does not.*
 > *That principle applies whether you are predicting Titanic survival or African tech salaries."*
@@ -466,9 +466,6 @@ anywhere. That constraint shaped everything about how I built this.
 BSc Physics & Mathematics — Moi University (2012) | Self-Taught ML Engineer | Kisumu, Kenya
 📧 [jmskoero@gmail.com](mailto:jmskoero@gmail.com) · [GitHub](https://github.com/jameskoero) · [LinkedIn](https://linkedin.com/in/jameskoero)
 
-*Mentored by:*
-- **Prof. Johan Loeckx** — VUB AI Lab, Vrije Universiteit Brussel, Belgium
-- **Prof. Samuel Liyala** — JOOUST, Kenya
 
 ---
 
